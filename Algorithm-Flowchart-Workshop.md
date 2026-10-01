@@ -417,6 +417,34 @@ customer's purchase amount and displays **"Free Delivery"** if the
 amount is 500 SEK or more; otherwise display **"Delivery Charge
 Applies"**.
 
+### ✔ Pseudocode
+
+```text
+START
+
+INPUT purchaseAmount
+
+IF purchaseAmount >= 500 THEN
+    DISPLAY "Free Delivery"
+ELSE
+    DISPLAY "Delivery Charge Applies"
+END IF
+
+END
+```
+
+### ✔ Flowchart
+
+```mermaid
+flowchart TD
+    A([Start]) --> B[Input purchase amount]
+    B --> C{purchase amount >= 500 SEK?}
+    C -->|Yes| D["Display Free Delivery"]
+    C -->|No| E["Display Delivery Charge Applies"]
+    D --> F([End])
+    E --> F
+```
+
 ---
 
 ## 12. Employee Salary and Bonus Calculator
@@ -426,6 +454,45 @@ employee's monthly salary and years of service, calculates a bonus of
 **10%** for employees with 5 or more years of service and **5%** for
 others, then displays the bonus and total salary.
 
+### ✔ Pseudocode
+
+```text
+START
+
+INPUT monthlySalary
+INPUT yearsOfService
+
+IF yearsOfService >= 5 THEN
+    bonus = monthlySalary * 0.10
+ELSE
+    bonus = monthlySalary * 0.05
+END IF
+
+totalSalary = monthlySalary + bonus
+
+DISPLAY bonus
+DISPLAY totalSalary
+
+END
+
+```
+
+### ✔ Flowchart
+
+```mermaid
+flowchart TD
+    A([Start]) --> B[Input monthly salary]
+    B --> C[Input years of service]
+    C --> D{Years of service >= 5?}
+    D -->|Yes| E[bonus = salary * 10%]
+    D -->|No| F[bonus = salary * 5%]
+    E --> G[total salary = monthly salary + bonus]
+    F --> G
+    G --> H[Display bonus]
+    H --> I[Display total salary]
+    I --> J([End])
+
+```
 ---
 
 ## 13. Mobile Data Usage Monitor
@@ -434,6 +501,39 @@ Write the algorithm and draw the flowchart for a program that inputs a
 user's monthly data limit and data usage, then displays whether the user
 has exceeded the limit or how much data remains.
 
+### ✔ Pseudocode
+
+```text
+START
+
+INPUT dataLimit
+INPUT dataUsage
+
+IF dataUsage > dataLimit THEN
+    DISPLAY "Data limit exceeded"
+ELSE
+    remainingData = dataLimit - dataUsage
+    DISPLAY "Data remaining: ", remainingData
+END IF
+
+END
+
+```
+
+### ✔ Flowchart
+
+```mermaid
+flowchart TD
+    A([Start]) --> B[Input data limit]
+    B --> C[Input data usage]
+    C --> D{Data usage > data limit?}
+    D -->|Yes| E["Display Data limit exceeded"]
+    D -->|No| F["remaining data = data limit - data usage"]
+    F --> G["Display remaining data"]
+    E --> H([End])
+    G --> H
+
+```
 ---
 
 ## 14. Login System (Maximum 3 Attempts)
@@ -443,6 +543,48 @@ up to 3 attempts to enter the correct password. Display **"Access
 Granted"** if the password is correct; otherwise display **"Account
 Locked"** after 3 failed attempts.
 
+### ✔ Pseudocode
+
+```text
+START
+
+SET correctPassword = "password123"
+SET attempts = 0
+
+WHILE attempts < 3
+    INPUT password
+
+    IF password = correctPassword THEN
+        DISPLAY "Access Granted"
+        END
+    ELSE
+        attempts = attempts + 1
+    END IF
+END WHILE
+
+DISPLAY "Account Locked"
+
+END
+
+
+```
+
+### ✔ Flowchart
+
+```mermaid
+flowchart TD
+    A([Start]) --> B[Set attempts = 0]
+    B --> C[Input password]
+    C --> D{Is password correct?}
+    D -->|Yes| E["Display Access Granted"]
+    D -->|No| F[attempts = attempts + 1]
+    F --> G{attempts < 3?}
+    G -->|Yes| C
+    G -->|No| H["Display Account Locked"]
+    E --> I([End])
+    H --> I
+
+```
 ---
 
 ## 15. Store Checkout with Multiple Items
@@ -451,6 +593,50 @@ Write the algorithm and draw the flowchart for a program that inputs the
 number of items purchased, calculates the total purchase amount using a
 loop, and applies a **15% discount** if the total exceeds 5000 SEK.
 
+### ✔ Pseudocode
+
+```text
+START
+
+INPUT numberOfItems
+SET total = 0
+
+FOR i = 1 TO numberOfItems
+    INPUT itemPrice
+    total = total + itemPrice
+END FOR
+
+IF total > 5000 THEN
+    discount = total * 0.15
+    total = total - discount
+END IF
+
+DISPLAY total
+
+END
+```
+
+### ✔ Flowchart
+
+```mermaid
+flowchart TD
+    A([Start]) --> B[Input number of items]
+    B --> C[Set total = 0]
+    C --> D[Set i = 1]
+    D --> E{i <= number of items?}
+    E -->|Yes| F[Input item price]
+    F --> G[total = total + item price]
+    G --> H[Set i = i + 1]
+    H --> E
+    E -->|No| I{Total > 5000 SEK?}
+    I -->|Yes| J[discount = total * 15%]
+    J --> K[total = total - discount]
+    I -->|No| L[Keep total unchanged]
+    K --> M[Display total]
+    L --> M
+    M --> N([End])
+
+```
 ---
 
 ## 16. Electricity Bill Calculator
@@ -460,4 +646,48 @@ number of electricity units consumed and calculates the total bill using
 the following rates: first 100 units at 1.5 SEK per unit, next 200
 units at 2.0 SEK per unit, and all remaining units at 3.0 SEK per unit.
 
+### ✔ Pseudocode
+
+```text
+START
+
+INPUT units
+
+SET bill = 0
+
+IF units <= 100 THEN
+    bill = units * 1.5
+
+ELSE IF units <= 300 THEN
+    bill = (100 * 1.5) + ((units - 100) * 2.0)
+
+ELSE
+    bill = (100 * 1.5) + (200 * 2.0) + ((units - 200 - 100) * 3.0)
+END IF
+
+DISPLAY bill
+
+END
+```
+
+### ✔ Flowchart
+
+```mermaid
+flowchart TD
+    A([Start]) --> B[Input units]
+    B --> C[Set bill = 0]
+    C --> D{Units <= 100?}
+
+    D -->|Yes| E[Bill = units * 1.5]
+    D -->|No| F{Units <= 300?}
+
+    F -->|Yes| G["Bill = 100 * 1.5 + (units - 100)*2.0"]
+    F -->|No| H["Bill = 100 * 1.5 + 200 * 2.0 + (units - 100 - 200) * 3.0"]
+
+    E --> I[Display bill]
+    G --> I
+    H --> I
+    I --> J([End])
+
+```
 ---
